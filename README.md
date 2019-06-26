@@ -1,5 +1,5 @@
 # Important note
- The code in this package is intended to specifically run the analysis as it appears in Boivin V. _et al._, 2019. Reducing the structure bias of RNA-Seq reveals a large number of non-annotated non-coding RNA. __Nucleic Acids Research__. Available from: _somewhere_
+ The code in this package is intended to specifically run the analysis as it appears in Boivin V. _et al._, 2019. Reducing the structure bias of RNA-Seq reveals a large number of non-annotated non-coding RNA. __Nucleic Acids Research__. Available from: _link_
 
 
 # RNA-Seq pipeline
@@ -38,9 +38,9 @@ conda activate smake
 
 #### Step 1: Install workflow
 
-If you simply want to use this workflow, download and extract the [latest release](http://gitlabscottgroup.med.usherbrooke.ca/gaspard/nra-blockbuster/tree/master).
+If you simply want to use this workflow, download and extract the [latest release](http://gitlabscottgroup.med.usherbrooke.ca/gaspard/snakemake_blockbuster/tree/master).
 
-If you use this workflow in a paper, don't forget to give credits to the author by citing the URL of this repository and the publication. <!-- Include link to the publication once it will be published. -->
+If you use this workflow in a paper, don't forget to give credits to the author by citing the URL of this repository and the publication. [_Link_]()
 
 #### Step 2: Configure workflow
 
@@ -52,7 +52,7 @@ If you also use a `Slurm` cluster system, configure the workflow according to yo
 If you use a cluster system that operates with another schedule manager, configure the workflow according to your system via editing the files `cluster.json` and `slurmSubmit.py`
 See the [Snakemake documentation](https://snakemake.readthedocs.io/en/stable/executable.html) for further details.
 
-If you don't use a cluster system, you don't need to edit any file. Although, a cluster is highly recommended, certain steps of the worklfow are very CPU and RAM intensive (eg: `rule STAR_generateGenome`)
+If you don't use a cluster system, you don't need to edit any file. Although, a cluster is highly recommended, certain steps of the worklfow are CPU and RAM intensive (eg: `rule blockbuster`)
 
 #### Step 3: Execute workflow
 
@@ -78,7 +78,7 @@ snakemake -j 99 --use-conda --immediate-submit --notemp --cluster-config cluster
 ```
 If the nodes of the cluster don't have access to Internet, you will need to download all the required files. Then, you will be able to execute the worklfow in the cluster:
 ```bash
-snakemake --use-conda --until all_internet && 
+snakemake --use-conda --until all_internet &&
 snakemake -j 99 --use-conda --immediate-submit --notemp --cluster-config cluster.json --cluster 'python3 slurmSubmit.py {dependencies}'
 ```
 
@@ -88,3 +88,5 @@ snakemake --use-conda --cores N
 ```
 
 #### Step 4: Investigate results
+
+The clusters found by blockbuster should be located in the file `data/dataset/clusters/clusters.sorted.bed`

@@ -7,11 +7,16 @@ rule all:
         clusters="data/dataset/clusters/clusters.sorted.bed",
         flagstat = "data/qc/aligned.out.bam.flagstat"
 
+
+rule all_internet:
+    input:
+        bam = "data/dataset/bam/aligned.out.bam"
+
 rule download_bam:
     output:
         bam = "data/dataset/bam/aligned.out.bam"
     params:
-        link = "https://zenodo.org/api/files/[UID]/SRR5575709.aligned.out.bam"
+        link = "https://zenodo.org/record/3256666/files/SRR5575709.aligned.out.bam"
     shell:
         "wget -o {output.bam} {params.link}"
 
