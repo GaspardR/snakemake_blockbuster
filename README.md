@@ -1,5 +1,5 @@
 # Important note
- The code in this package is intended to specifically run the analysis as it appears in Boivin V. _et al._, 2019. Reducing the structure bias of RNA-Seq reveals a large number of non-annotated non-coding RNA. __Nucleic Acids Research__. Available from: _link_
+ The code in this package is intended to specifically run the analysis as it appears in Boivin V. _et al._, 2020. Reducing the structure bias of RNA-Seq reveals a large number of non-annotated non-coding RNA. _Under review_. Available from: _link_
 
 
 # RNA-Seq pipeline
@@ -15,17 +15,19 @@ For Linux users :
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
-rm Miniconda3-latest-Linux-x86_64.sh
 ```
 
 Answer `yes` to `Do you wish the installer to initialize Miniconda3?`
 
+To create the Snakemake environment used to launch Snakemake, run the following.
+The conda create command can appear to be stuck on Solving environment.
+The command is probably not stuck, be patient.
 
 To create the Snakemake environment used to launch Snakemake
 ```bash
 exec bash
 conda config --set auto_activate_base False
-conda create --name smake -c bioconda -c conda-forge snakemake=5.4.5
+conda create --name smake -c bioconda -c conda-forge snakemake=5.7.0
 ```
 
 Before running Snakemake, you have to initialize the environment
@@ -40,14 +42,14 @@ conda activate smake
 
 If you simply want to use this workflow, download and extract the [latest release](http://gitlabscottgroup.med.usherbrooke.ca/gaspard/snakemake_blockbuster/tree/master).
 
-If you use this workflow in a paper, don't forget to give credits to the author by citing the URL of this repository and the publication. [_Link_]()
+If you use this workflow in a paper, don't forget to give credits to the author by citing the URL of this repository and the publication. [Link]()
 
 #### Step 2: Configure workflow
 
-This workflow was developped for a [`Slurm`](https://slurm.schedmd.com/) cluster system.
+This workflow was developped for a [Slurm](https://slurm.schedmd.com/) cluster system.
 The system used for developping, testing and running the analysis is described [here](https://docs.computecanada.ca/wiki/Cedar).
 
-If you also use a `Slurm` cluster system, configure the workflow according to your system via editing the file `cluster.json`.
+If you also use a `Slurm` cluster system, configure the workflow according to your system by editing the file `cluster.json`.
 
 If you use a cluster system that operates with another schedule manager, configure the workflow according to your system via editing the files `cluster.json` and `slurmSubmit.py`
 See the [Snakemake documentation](https://snakemake.readthedocs.io/en/stable/executable.html) for further details.
@@ -66,9 +68,9 @@ snakemake --use-conda -np
 You can visualize the steps of the workflow with:
 ```bash
 snakemake --dag | dot -Tpdf > dag.pdf
-#OR
+# OR
 snakemake --dag | dot -Tsvg > dag.svg
-#OR
+# OR
 snakemake --dag | dot -Tpng > dag.png
 ```
 
