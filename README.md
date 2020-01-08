@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/232594584.svg)](https://zenodo.org/badge/latestdoi/232594584)
+
 # Important note
  The code in this package is intended to specifically run the analysis as it appears in Boivin V. _et al._, 2020. Reducing the structure bias of RNA-Seq reveals a large number of non-annotated non-coding RNA. _Under review_. Available from: _link_
 
